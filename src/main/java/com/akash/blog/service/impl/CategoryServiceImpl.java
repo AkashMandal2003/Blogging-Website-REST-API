@@ -67,4 +67,10 @@ public class CategoryServiceImpl implements CategoryService {
 
         categoryRepository.delete(category);
     }
+
+    @Override
+    public List<CategoryDto> searchCategory(String query) {
+        List<Category> categories = categoryRepository.searchCategory(query);
+        return categories.stream().map((category)->modelMapper.map(category,CategoryDto.class)).collect(Collectors.toList());
+    }
 }

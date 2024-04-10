@@ -119,4 +119,10 @@ public class CommentServiceImpl implements CommentService {
 
         commentRepository.delete(comment);
     }
+
+    @Override
+    public List<CommentDto> searchComments(String query) {
+        List<Comment> comments = commentRepository.searchComments(query);
+        return comments.stream().map(comment -> mapToDTO(comment)).collect(Collectors.toList());
+    }
 }

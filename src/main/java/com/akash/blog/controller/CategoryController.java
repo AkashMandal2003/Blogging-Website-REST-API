@@ -111,4 +111,18 @@ public class CategoryController {
         categoryService.deleteCategory(categoryId);
         return ResponseEntity.ok("Category deleted successfully!.");
     }
+
+    //search category REST API
+    @Operation(
+            summary = "Get All Categories By Search REST API",
+            description = "Get all categories according to search"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Http status 200 SUCCESS"
+    )
+    @GetMapping("/search")
+    public ResponseEntity<List<CategoryDto>> searchCategory(@RequestParam("query") String query){
+        return ResponseEntity.ok(categoryService.searchCategory(query));
+    }
 }
