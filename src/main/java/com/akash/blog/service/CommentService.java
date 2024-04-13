@@ -16,4 +16,6 @@ public interface CommentService {
 
     void deleteComment(Long postId,Long commentId);
 
+    List<CommentDto> searchComments(String query);
+
 }

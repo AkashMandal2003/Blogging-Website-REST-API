@@ -17,4 +17,6 @@ public interface PostService {
     void deletePost(long id);
 
     List<PostDto> getPostByCategory(Long categoryId);
+
+    List<PostDto> searchPost(String query);
 }

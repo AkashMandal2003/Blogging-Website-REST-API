@@ -102,4 +102,19 @@ public class CommentController {
         return new ResponseEntity<>("Comment deleted successfully",HttpStatus.OK);
     }
 
+
+    //search comment REST API
+    @GetMapping("/{postId}/comments/search")
+    @Operation(
+            summary = "Get All Comments By Search REST API",
+            description = "Get a particular comment according to search by user"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Http status 200 SUCCESS"
+    )
+    public ResponseEntity<List<CommentDto>> searchComments(@RequestParam("query") String query){
+        return ResponseEntity.ok(commentService.searchComments(query));
+    }
+
 }
