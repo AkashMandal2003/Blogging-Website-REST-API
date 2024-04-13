@@ -137,4 +137,10 @@ public class PostServiceImpl implements PostService {
 
         return posts.stream().map((post)->mapToDTO(post)).collect(Collectors.toList());
     }
+
+    @Override
+    public List<PostDto> searchPost(String query) {
+        List<Post> posts = postRepository.searchPosts(query);
+        return posts.stream().map((post)->mapToDTO(post)).collect(Collectors.toList());
+    }
 }
